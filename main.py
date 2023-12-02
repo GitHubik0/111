@@ -7,15 +7,22 @@ class Student:
         self.gladness = 50
         self.progress = 0
         self.alive = True
+        self.eat = 10
+    def to_eat(self):
+        print("Час для їжі")
+        self.gladness += 10
+        self.eat += 25
 
     def to_study(self):
         print('Час для навчання')
         self.progress += 10
         self.gladness -= 5
+        self.eat -= 10
 
     def to_sleep(self):
         print('Це час для сну')
         self.gladness += 5
+        self.eat -= 10
 
     def to_chill(self):
         print('Це час для відпочинку')
@@ -32,6 +39,10 @@ class Student:
         elif self.progress > 5:
             print('Ти молодець')
             self.alive = False
+        elif self.eat < 2:
+            print("Ти голодний")
+            self.alive = False
+
 
     def end_of_the_day(self):
         print(f"щастя - {self.gladness}")
@@ -47,6 +58,8 @@ class Student:
             self.to_sleep()
         elif kubik == 3:
             self.to_chill()
+        elif kubik == 4:
+            self.to_eat()
         self.end_of_the_day()
         self.is_alive()
 
